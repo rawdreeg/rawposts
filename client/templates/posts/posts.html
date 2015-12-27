@@ -15,62 +15,35 @@
                     <h4 class="modal-title" id="myPostModalLabel"> Say what's on yo' mental</h4>
                 </div>
                 <div class="modal-body">
-                    ...
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Post!</button>
+                    {{#autoForm collection="Posts" id="insertPostForm" type="insert"}}
+                        {{> afQuickField name="body" rows=4}}
+                        <button type="submit" class="btn btn-primary">Send</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    {{/autoForm}}
+
                 </div>
             </div>
         </div>
     </div>
     <hr>
 
-    <div class="row post">
-        <div class="col-md-1">
-            <!-- Profile picture -->
-            <img src="img/profile.jpg">
-        </div>
-        <div class="col-md-11">
-            <!-- Post contents -->
-            <small>Posted by raw at 26-12-2015</small>
-            <p>This is an actual post</p>
-        </div>
-    </div>
+    {{#each posts}}
 
     <div class="row post">
         <div class="col-md-1">
             <!-- Profile picture -->
-            <img src="img/profile.jpg">
+            <img src="{{getProfileImg userId}}">
         </div>
         <div class="col-md-11">
             <!-- Post contents -->
-            <small>Posted by raw at 26-12-2015</small>
-            <p>This is an actual post</p>
+            <small>Posted by {{username}} at {{createdAt}}</small>
+            <p>{{body}}</p>
         </div>
     </div>
+    {{else}}
 
-    <div class="row post">
-        <div class="col-md-1">
-            <!-- Profile picture -->
-            <img src="img/profile.jpg">
-        </div>
-        <div class="col-md-11">
-            <!-- Post contents -->
-            <small>Posted by raw at 26-12-2015</small>
-            <p>This is an actual post</p>
-        </div>
-    </div>
+        <p>No posts available</p>
 
-    <div class="row post">
-        <div class="col-md-1">
-            <!-- Profile picture -->
-            <img src="img/profile.jpg">
-        </div>
-        <div class="col-md-11">
-            <!-- Post contents -->
-            <small>Posted by raw at 26-12-2015</small>
-            <p>This is an actual post</p>
-        </div>
-    </div>
+    {{/each}}
+
 </template>
