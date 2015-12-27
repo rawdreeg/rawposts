@@ -2,6 +2,10 @@
  * Created by rawdreeg on 2015/12/26.
  */
 
+Meteor.subscribe("posts");
+Meteor.subscribe("ProfileImages");
+Meteor.subscribe("UserImages");
+
 Meteor.startup(function () {
     AccountsEntry.config({
         homeRoute: '/' ,                   // mandatory - path to redirect to after sign-out
@@ -18,3 +22,5 @@ Template.registerHelper('getProfileImg', function(userId){
 
     return imgUrl;
 });
+
+
